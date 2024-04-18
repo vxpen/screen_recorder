@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="ScreenRecorder" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="ScreenRecorder" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="Start Recording" keyEquivalent="1" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="startStopRecordingMenuClick:" target="Voe-Tx-rLC" id="fK7-P2-sP5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Snap Image" keyEquivalent="2" id="2V6-Uz-ILO">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="snapImageMenuClick:" target="Voe-Tx-rLC" id="X24-LU-aIX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Controls" keyEquivalent="C" id="YnF-OJ-xYA">
+                                            <connections>
+                                                <action selector="showHideControlMenuClick:" target="Voe-Tx-rLC" id="SXP-5K-fj9"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                                        <menuItem title="Open Record Folder" keyEquivalent="o" id="mUs-Nd-bYb">
+                                            <connections>
+                                                <action selector="openRecordFolderMenuClick:" target="Voe-Tx-rLC" id="5ct-oA-olW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Image Folder" keyEquivalent="O" id="CL0-Hn-W7c">
+                                            <connections>
+                                                <action selector="openImageFolderMenuClick:" target="Voe-Tx-rLC" id="gKM-5y-EdL"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <action selector="preferenceMenuClick:" target="Voe-Tx-rLC" id="eOg-bU-uGa"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="About" id="Kd2-mp-pUS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="abortMenuClick:" target="Voe-Tx-rLC" id="ZXu-Gl-Wzh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="dSB-hH-CV8"/>
+                                        <menuItem title="Quit" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+                    <connections>
+                        <outlet property="mainMenu" destination="uQy-DD-JDr" id="7pg-Eb-Cg3"/>
+                        <outlet property="showHideControlsMenuItem" destination="YnF-OJ-xYA" id="6SF-Fs-REb"/>
+                        <outlet property="snapImageMenuItem" destination="2V6-Uz-ILO" id="Bny-Mr-EEt"/>
+                        <outlet property="startStopMenuItem" destination="5kV-Vb-QxS" id="8dK-tI-tjM"/>
+                    </connections>
+                </customObject>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="-167"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="R2V-B0-nI4">
+            <objects>
+                <windowController storyboardIdentifier="ControlWindowController" id="B8D-0N-5wS" customClass="ControlWindowController" sceneMemberID="viewController">
+                    <window key="window" title="Controls" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="868" y="464" width="280" height="200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                    </connections>
+                </windowController>
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="26Y-ml-xmD">
+            <objects>
+                <windowController storyboardIdentifier="RecordAreaWindowController" id="fQH-k7-vnx" customClass="RecordAreaWindowController" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="BZq-la-Ive" customClass="RecordAreaWindow">
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES"/>
+                        <rect key="contentRect" x="0.0" y="757" width="400" height="400"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="fQH-k7-vnx" id="Rgi-9C-IAZ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="DpF-Jn-DiV" kind="relationship" relationship="window.shadowedContentViewController" id="ffB-JJ-OGY"/>
+                    </connections>
+                </windowController>
+                <customObject id="Sbr-Po-f4h" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="263"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="6hf-a2-2Av">
+            <objects>
+                <windowController storyboardIdentifier="AboutWindowController" id="30c-Y2-foW" sceneMemberID="viewController">
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="osw-7G-R3f">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="190"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="30c-Y2-foW" id="HFo-gN-ctZ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="hWy-5O-KaP" kind="relationship" relationship="window.shadowedContentViewController" id="v3S-Fj-yhP"/>
+                    </connections>
+                </windowController>
+                <customObject id="KfL-N2-b14" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="744"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="2N3-WO-bbo">
+            <objects>
+                <viewController id="hWy-5O-KaP" customClass="AboutViewController" sceneMemberID="viewController">
+                    <view key="view" id="lJn-Z6-DD1">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="190"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqm-rf-AJU">
+                                <rect key="frame" x="20" y="70" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oqm-rf-AJU" secondAttribute="height" multiplier="1:1" id="Cop-4d-63e"/>
+                                    <constraint firstAttribute="width" constant="100" id="hf2-ce-HDi"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Wha-AB-wWL"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jvO-Mu-JSf">
+                                <rect key="frame" x="150" y="149" width="48" height="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="WhY-w0-t1b">
+                                    <font key="font" metaFont="system" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ngr-OP-UnJ">
+                                <rect key="frame" x="150" y="118" width="50" height="15"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Version:" id="kig-zj-dnL">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="djU-Mg-cqN">
+                                <rect key="frame" x="150" y="91" width="54" height="15"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Support:" id="JzD-Rj-M8d">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-9L-NVG">
+                                <rect key="frame" x="28" y="30" width="68" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Copyright" id="xAc-zp-shN">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="afD-Ih-Mad">
+                                <rect key="frame" x="210" y="91" width="45" height="16"/>
+                                <buttonCell key="cell" type="bevel" title="Button" bezelStyle="regularSquare" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="u9D-Iy-muW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="supportEmailButtonClick:" target="hWy-5O-KaP" id="NtF-eQ-Lne"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jvO-Mu-JSf" firstAttribute="top" secondItem="oqm-rf-AJU" secondAttribute="top" id="487-tJ-G5j"/>
+                            <constraint firstItem="djU-Mg-cqN" firstAttribute="leading" secondItem="oqm-rf-AJU" secondAttribute="trailing" constant="32" id="5Ml-fX-dzQ"/>
+                            <constraint firstAttribute="bottom" secondItem="hEh-9L-NVG" secondAttribute="bottom" constant="30" id="Ad8-vM-u9F"/>
+                            <constraint firstItem="afD-Ih-Mad" firstAttribute="centerY" secondItem="djU-Mg-cqN" secondAttribute="centerY" id="C3V-UO-e3u"/>
+                            <constraint firstItem="jvO-Mu-JSf" firstAttribute="leading" secondItem="oqm-rf-AJU" secondAttribute="trailing" constant="32" id="JiR-fR-4q5"/>
+                            <constraint firstItem="Ngr-OP-UnJ" firstAttribute="top" secondItem="jvO-Mu-JSf" secondAttribute="bottom" constant="16" id="Oul-wr-mdq"/>
+                            <constraint firstItem="afD-Ih-Mad" firstAttribute="leading" secondItem="djU-Mg-cqN" secondAttribute="trailing" constant="8" id="e3q-bb-yjb"/>
+                            <constraint firstItem="oqm-rf-AJU" firstAttribute="leading" secondItem="lJn-Z6-DD1" secondAttribute="leading" constant="20" id="g31-uT-BCq"/>
+                            <constraint firstItem="Ngr-OP-UnJ" firstAttribute="leading" secondItem="oqm-rf-AJU" secondAttribute="trailing" constant="32" id="hBz-sc-l8k"/>
+                            <constraint firstItem="djU-Mg-cqN" firstAttribute="top" secondItem="Ngr-OP-UnJ" secondAttribute="bottom" constant="12" id="jah-bl-Nqq"/>
+                            <constraint firstItem="hEh-9L-NVG" firstAttribute="leading" secondItem="lJn-Z6-DD1" secondAttribute="leading" constant="30" id="qZd-z7-ja2"/>
+                            <constraint firstItem="oqm-rf-AJU" firstAttribute="top" secondItem="lJn-Z6-DD1" secondAttribute="top" constant="20" id="uu6-0V-3sk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="copyrightTextField" destination="hEh-9L-NVG" id="J8A-hU-cuN"/>
+                        <outlet property="logoImageView" destination="oqm-rf-AJU" id="W6w-Wa-Edw"/>
+                        <outlet property="productNameTextField" destination="jvO-Mu-JSf" id="Cwb-La-h3R"/>
+                        <outlet property="supportEmailButton" destination="afD-Ih-Mad" id="6b6-uj-sL2"/>
+                        <outlet property="versionTextField" destination="Ngr-OP-UnJ" id="xlx-18-4g8"/>
+                    </connections>
+                </viewController>
+                <customObject id="2T7-s1-TcV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="744"/>
+        </scene>
+        <!--Record Area View Controller-->
+        <scene sceneID="L0l-lz-GmS">
+            <objects>
+                <viewController id="DpF-Jn-DiV" customClass="RecordAreaViewController" sceneMemberID="viewController">
+                    <view key="view" id="bug-Qd-o95">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="393"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAP-9x-Bok" userLabel="Top Image View">
+                                <rect key="frame" x="6" y="381" width="468" height="6"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="normal_top_bottom" id="Qo5-O4-hg7"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YAl-ka-Q8a" userLabel="Left Image View">
+                                <rect key="frame" x="6" y="6" width="6" height="381"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="normal_left_right" id="vVZ-N7-ua3"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rhi-8D-gm5" userLabel="Right Image View">
+                                <rect key="frame" x="468" y="6" width="6" height="381"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="normal_left_right" id="nzK-q9-8zK"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gle-gh-gmb" userLabel="Bottom Image View">
+                                <rect key="frame" x="6" y="6" width="468" height="6"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="normal_top_bottom" id="SUD-xJ-joa"/>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="b9R-Wb-2fe">
+                                <rect key="frame" x="12" y="12" width="456" height="369"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s7D-Mq-cf4">
+                                        <rect key="frame" x="44" y="177" width="368" height="16"/>
+                                        <textFieldCell key="cell" title="Press Command key and drag this area to fit special window" id="dIv-Sm-ksm">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="s7D-Mq-cf4" firstAttribute="centerX" secondItem="b9R-Wb-2fe" secondAttribute="centerX" id="EAK-oH-Qca"/>
+                                    <constraint firstItem="s7D-Mq-cf4" firstAttribute="centerY" secondItem="b9R-Wb-2fe" secondAttribute="centerY" id="ayN-DU-3BU"/>
+                                </constraints>
+                            </customView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8fi-KG-3vG" userLabel="Top Left Image View">
+                                <rect key="frame" x="0.0" y="369" width="24" height="24"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="handle_icon" id="8c5-Kv-53t"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ekG-Nr-hZ2" userLabel="Top Right Image View">
+                                <rect key="frame" x="456" y="369" width="24" height="24"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="handle_icon" id="Tgx-du-KTY"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRM-pF-UOj" userLabel="Bottom Left Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="handle_icon" id="X0m-Gv-tdb"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ey0-be-0gu" userLabel="Bottom Right Image View">
+                                <rect key="frame" x="456" y="0.0" width="24" height="24"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="handle_icon" id="KGd-rw-E4u"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FAP-9x-Bok" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" constant="6" id="13n-3J-eYG"/>
+                            <constraint firstItem="8fi-KG-3vG" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" id="5Gc-qr-atz"/>
+                            <constraint firstItem="ekG-Nr-hZ2" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" id="5UR-zO-Bir"/>
+                            <constraint firstAttribute="trailing" secondItem="FAP-9x-Bok" secondAttribute="trailing" constant="6" id="6Yj-G6-015"/>
+                            <constraint firstAttribute="trailing" secondItem="b9R-Wb-2fe" secondAttribute="trailing" constant="12" id="A65-yc-lgd"/>
+                            <constraint firstItem="Rhi-8D-gm5" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" constant="6" id="BQ9-MK-306"/>
+                            <constraint firstAttribute="trailing" secondItem="ey0-be-0gu" secondAttribute="trailing" id="D4o-OA-pJ8"/>
+                            <constraint firstItem="IRM-pF-UOj" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" id="FxO-9t-ikJ"/>
+                            <constraint firstItem="FAP-9x-Bok" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" constant="6" id="JDk-Cl-XKA"/>
+                            <constraint firstItem="YAl-ka-Q8a" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" constant="6" id="RkH-c4-ch5"/>
+                            <constraint firstAttribute="bottom" secondItem="ey0-be-0gu" secondAttribute="bottom" id="VmX-o1-Z0q"/>
+                            <constraint firstItem="b9R-Wb-2fe" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" constant="12" id="XVD-cY-uWM"/>
+                            <constraint firstAttribute="bottom" secondItem="YAl-ka-Q8a" secondAttribute="bottom" constant="6" id="a5H-eo-2ul"/>
+                            <constraint firstAttribute="trailing" secondItem="Rhi-8D-gm5" secondAttribute="trailing" constant="6" id="cNh-p6-hRm"/>
+                            <constraint firstAttribute="bottom" secondItem="IRM-pF-UOj" secondAttribute="bottom" id="dYx-a9-iYD"/>
+                            <constraint firstItem="b9R-Wb-2fe" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" constant="12" id="ezg-g7-SvH"/>
+                            <constraint firstItem="8fi-KG-3vG" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" id="gN6-vK-M1o"/>
+                            <constraint firstAttribute="bottom" secondItem="b9R-Wb-2fe" secondAttribute="bottom" constant="12" id="gvn-6H-QyR"/>
+                            <constraint firstAttribute="trailing" secondItem="Gle-gh-gmb" secondAttribute="trailing" constant="6" id="hDu-g7-kRH"/>
+                            <constraint firstAttribute="bottom" secondItem="Rhi-8D-gm5" secondAttribute="bottom" constant="6" id="pLy-lR-XOh"/>
+                            <constraint firstAttribute="trailing" secondItem="ekG-Nr-hZ2" secondAttribute="trailing" id="rdW-XS-3q0"/>
+                            <constraint firstItem="Gle-gh-gmb" firstAttribute="leading" secondItem="bug-Qd-o95" secondAttribute="leading" constant="6" id="ski-ee-BML"/>
+                            <constraint firstItem="YAl-ka-Q8a" firstAttribute="top" secondItem="bug-Qd-o95" secondAttribute="top" constant="6" id="tKP-m9-fyG"/>
+                            <constraint firstAttribute="bottom" secondItem="Gle-gh-gmb" secondAttribute="bottom" constant="6" id="zHW-wN-QCo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomBorderImageView" destination="Gle-gh-gmb" id="3gG-Xk-jiD"/>
+                        <outlet property="bottomLeftImageView" destination="IRM-pF-UOj" id="6oa-oj-hAH"/>
+                        <outlet property="bottomRightImageView" destination="ey0-be-0gu" id="7nF-lm-cBY"/>
+                        <outlet property="leftBorderImageView" destination="YAl-ka-Q8a" id="jNy-Mu-YgQ"/>
+                        <outlet property="recordBorderView" destination="b9R-Wb-2fe" id="qiX-Fn-5Ir"/>
+                        <outlet property="rightBorderImageView" destination="Rhi-8D-gm5" id="vXf-N8-6GX"/>
+                        <outlet property="tipTextField" destination="s7D-Mq-cf4" id="W8e-zh-Nem"/>
+                        <outlet property="topBorderImageView" destination="FAP-9x-Bok" id="ZxU-oB-Byr"/>
+                        <outlet property="topLeftImageView" destination="8fi-KG-3vG" id="ZIy-sI-Htf"/>
+                        <outlet property="topRightImageView" destination="ekG-Nr-hZ2" id="nbp-wx-MPO"/>
+                    </connections>
+                </viewController>
+                <customObject id="UqV-oC-g0T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="268.5"/>
+        </scene>
+        <!--Control View Controller-->
+        <scene sceneID="hIz-AP-VOD">
+            <objects>
+                <viewController storyboardIdentifier="ControlViewController" id="XfG-lQ-9wD" customClass="ControlViewController" sceneMemberID="viewController">
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="H2s-QS-ANp">
+                                <rect key="frame" x="10" y="113" width="67" height="67"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="record_video_button_on" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="tVe-nU-rSZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="recordButtonClick:" target="XfG-lQ-9wD" id="Mo5-zt-c2w"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="QkG-Ps-qwh">
+                                <rect key="frame" x="19" y="43" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QkG-Ps-qwh" secondAttribute="height" multiplier="1:1" id="C3e-q2-r5F"/>
+                                    <constraint firstAttribute="width" constant="50" id="nf5-Gs-z9r"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="snap_image_button_on" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ts4-D2-DLj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="snapImageButtonClick:" target="XfG-lQ-9wD" id="Alu-3b-1dY"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-i5-D9E">
+                                <rect key="frame" x="97" y="76" width="89" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Custom Size:" id="l15-pz-Nk4">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22N-iJ-D6n">
+                                <rect key="frame" x="105" y="164" width="40" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Width" id="c6G-4h-AKd">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ixk-nz-ndS">
+                                <rect key="frame" x="100" y="127" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="G7n-uW-kF6"/>
+                                    <constraint firstAttribute="width" constant="50" id="cFL-wG-nvr"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ndv-vx-Tgr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="widthTextFiledDidEndEditing:" target="XfG-lQ-9wD" id="Zxk-K2-7sd"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mUb-Eh-4q8">
+                                <rect key="frame" x="191" y="164" width="45" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Height" id="sA6-L8-0Ba">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ADl-ms-J9W">
+                                <rect key="frame" x="189" y="127" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="k6A-Vy-5aH"/>
+                                    <constraint firstAttribute="width" constant="50" id="zLx-Ye-Idq"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="MQi-9g-wKh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="heightTextFieldDidEndEditing:" target="XfG-lQ-9wD" id="nog-xx-TzN"/>
+                                </connections>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WD1-2S-0VT">
+                                <rect key="frame" x="8" y="8" width="182" height="18"/>
+                                <buttonCell key="cell" type="check" title="  Record audio with videos" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W1d-af-COX">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="recordAudioWithVideoButtonClick:" target="XfG-lQ-9wD" id="mtp-md-sUw"/>
+                                </connections>
+                            </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2QK-Qv-sJl">
+                                <rect key="frame" x="97" y="40" width="165" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="RT6-QR-veV"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="XpA-Sw-f1V">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="T71-z8-7jy"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="areaSizePopUpButtonClick:" target="XfG-lQ-9wD" id="kTT-Ur-o9k"/>
+                                </connections>
+                            </popUpButton>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WD1-2S-0VT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="2Q5-UJ-DTU"/>
+                            <constraint firstItem="H2s-QS-ANp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="43O-8f-1JP"/>
+                            <constraint firstItem="ADl-ms-J9W" firstAttribute="top" secondItem="mUb-Eh-4q8" secondAttribute="bottom" constant="16" id="9Cf-jh-dEO"/>
+                            <constraint firstItem="Ixk-nz-ndS" firstAttribute="top" secondItem="22N-iJ-D6n" secondAttribute="bottom" constant="16" id="Exz-1b-lOj"/>
+                            <constraint firstItem="QkG-Ps-qwh" firstAttribute="top" secondItem="H2s-QS-ANp" secondAttribute="bottom" constant="20" id="KFJ-Cv-eMV"/>
+                            <constraint firstAttribute="bottom" secondItem="WD1-2S-0VT" secondAttribute="bottom" constant="10" id="Qg3-TX-l02"/>
+                            <constraint firstItem="ADl-ms-J9W" firstAttribute="centerX" secondItem="mUb-Eh-4q8" secondAttribute="centerX" id="RE5-Sm-NJn"/>
+                            <constraint firstItem="H2s-QS-ANp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="YQ3-hh-Ci8"/>
+                            <constraint firstItem="mUb-Eh-4q8" firstAttribute="leading" secondItem="22N-iJ-D6n" secondAttribute="trailing" constant="50" id="aC8-js-ovx"/>
+                            <constraint firstItem="22N-iJ-D6n" firstAttribute="top" secondItem="H2s-QS-ANp" secondAttribute="top" id="aEk-e2-Zyt"/>
+                            <constraint firstItem="22N-iJ-D6n" firstAttribute="leading" secondItem="H2s-QS-ANp" secondAttribute="trailing" constant="30" id="cEE-7C-ntb"/>
+                            <constraint firstItem="2QK-Qv-sJl" firstAttribute="leading" secondItem="9Nn-i5-D9E" secondAttribute="leading" id="jKp-6A-LB4"/>
+                            <constraint firstItem="mUb-Eh-4q8" firstAttribute="top" secondItem="22N-iJ-D6n" secondAttribute="top" id="mke-Ce-d1c"/>
+                            <constraint firstItem="9Nn-i5-D9E" firstAttribute="leading" secondItem="QkG-Ps-qwh" secondAttribute="trailing" constant="30" id="pAY-tz-hlu"/>
+                            <constraint firstItem="9Nn-i5-D9E" firstAttribute="top" secondItem="QkG-Ps-qwh" secondAttribute="top" id="uAq-cR-nh8"/>
+                            <constraint firstItem="2QK-Qv-sJl" firstAttribute="top" secondItem="9Nn-i5-D9E" secondAttribute="bottom" constant="12" id="uPn-PL-1hn"/>
+                            <constraint firstItem="Ixk-nz-ndS" firstAttribute="centerX" secondItem="22N-iJ-D6n" secondAttribute="centerX" id="vQd-yr-wnf"/>
+                            <constraint firstItem="QkG-Ps-qwh" firstAttribute="centerX" secondItem="H2s-QS-ANp" secondAttribute="centerX" id="xSs-RX-AvJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="areaHeightTextField" destination="ADl-ms-J9W" id="VlE-57-bBl"/>
+                        <outlet property="areaSizePopUpButton" destination="2QK-Qv-sJl" id="gTo-zE-LrO"/>
+                        <outlet property="areaWidthTextField" destination="Ixk-nz-ndS" id="7GX-Ny-bFV"/>
+                        <outlet property="recordAudioButton" destination="WD1-2S-0VT" id="p4u-3D-anL"/>
+                        <outlet property="recordButton" destination="H2s-QS-ANp" id="3TI-YQ-PSB"/>
+                        <outlet property="snapImageButton" destination="QkG-Ps-qwh" id="8DR-V7-tD0"/>
+                    </connections>
+                </viewController>
+                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="600"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="PSJ-ML-ESO">
+            <objects>
+                <windowController storyboardIdentifier="PreferencesWindowController" id="0oL-Tn-YG8" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YSD-bf-LSQ">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="380"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="0oL-Tn-YG8" id="rtb-W3-fv7"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Rx2-tl-mxo" kind="relationship" relationship="window.shadowedContentViewController" id="LXu-cO-px9"/>
+                    </connections>
+                </windowController>
+                <customObject id="LWp-7A-iqE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="1140"/>
+        </scene>
+        <!--Preference View Controller-->
+        <scene sceneID="Frd-a2-EyU">
+            <objects>
+                <viewController storyboardIdentifier="PreferenceViewController" id="Rx2-tl-mxo" customClass="PreferenceViewController" sceneMemberID="viewController">
+                    <view key="view" id="epK-Zd-RKQ">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="4Iu-L3-Ens">
+                                <rect key="frame" x="13" y="10" width="374" height="276"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="General" identifier="" id="ChP-oW-AXd">
+                                        <view key="view" id="pXK-lz-ANU">
+                                            <rect key="frame" x="10" y="33" width="354" height="230"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c4W-4S-t7C">
+                                                    <rect key="frame" x="38" y="164" width="260" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Automatically Open Video in QuickTime" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XaJ-Ko-bao">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="automaticOpenVideoInQuickTimeClick:" target="Rx2-tl-mxo" id="zLy-Hg-mwM"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t4y-59-TNl">
+                                                    <rect key="frame" x="38" y="130" width="201" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Hide controls when recording" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vHZ-VR-lZY">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="hideControlsWhenRecordingClick:" target="Rx2-tl-mxo" id="cXI-9k-aXj"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0YJ-Th-3Cx">
+                                                    <rect key="frame" x="38" y="96" width="191" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Capture mouse within video" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mde-0c-s3a">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="captureMouseClick:" target="Rx2-tl-mxo" id="Xor-rr-KHz"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sL6-OY-JiG">
+                                                    <rect key="frame" x="38" y="8" width="115" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Video Frame Rate:" id="EM9-Nh-oxU">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z73-Uo-3Ey">
+                                                    <rect key="frame" x="179" y="3" width="95" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="Epj-Wy-raH"/>
+                                                    </constraints>
+                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8FL-uC-8Bk">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="nx7-El-vBR"/>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="videoFrameRateChange:" target="Rx2-tl-mxo" id="qRq-gq-olD"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VMv-zl-9qg">
+                                                    <rect key="frame" x="38" y="62" width="190" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Highlight mouse click event" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eUp-xu-sY1">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="highlightMouseClick:" target="Rx2-tl-mxo" id="pfB-bE-Epi"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0YJ-Th-3Cx" firstAttribute="top" secondItem="t4y-59-TNl" secondAttribute="bottom" constant="20" id="0i9-Qr-ab8"/>
+                                                <constraint firstItem="0YJ-Th-3Cx" firstAttribute="leading" secondItem="pXK-lz-ANU" secondAttribute="leading" constant="40" id="3XR-lL-ssC"/>
+                                                <constraint firstItem="z73-Uo-3Ey" firstAttribute="leading" secondItem="sL6-OY-JiG" secondAttribute="trailing" constant="30" id="KeX-DQ-MAz"/>
+                                                <constraint firstItem="VMv-zl-9qg" firstAttribute="top" secondItem="0YJ-Th-3Cx" secondAttribute="bottom" constant="20" id="ON2-dd-6d7"/>
+                                                <constraint firstItem="c4W-4S-t7C" firstAttribute="top" secondItem="pXK-lz-ANU" secondAttribute="top" constant="50" id="RRJ-PY-1e3"/>
+                                                <constraint firstItem="z73-Uo-3Ey" firstAttribute="centerY" secondItem="sL6-OY-JiG" secondAttribute="centerY" id="V2t-h7-UkZ"/>
+                                                <constraint firstItem="VMv-zl-9qg" firstAttribute="leading" secondItem="pXK-lz-ANU" secondAttribute="leading" constant="40" id="guh-p8-NfB"/>
+                                                <constraint firstItem="t4y-59-TNl" firstAttribute="top" secondItem="c4W-4S-t7C" secondAttribute="bottom" constant="20" id="jL3-ZT-LhR"/>
+                                                <constraint firstItem="t4y-59-TNl" firstAttribute="leading" secondItem="pXK-lz-ANU" secondAttribute="leading" constant="40" id="rw2-Mf-jX0"/>
+                                                <constraint firstItem="sL6-OY-JiG" firstAttribute="top" secondItem="VMv-zl-9qg" secondAttribute="bottom" constant="40" id="sMY-ms-HSF"/>
+                                                <constraint firstItem="sL6-OY-JiG" firstAttribute="leading" secondItem="pXK-lz-ANU" secondAttribute="leading" constant="40" id="wf2-il-P7A"/>
+                                                <constraint firstItem="c4W-4S-t7C" firstAttribute="leading" secondItem="pXK-lz-ANU" secondAttribute="leading" constant="40" id="ysb-k2-uk2"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Iu-L3-Ens" secondAttribute="trailing" constant="20" id="2PC-Aw-jS7"/>
+                            <constraint firstItem="4Iu-L3-Ens" firstAttribute="top" secondItem="epK-Zd-RKQ" secondAttribute="top" constant="20" id="e4q-Gj-bfD"/>
+                            <constraint firstAttribute="bottom" secondItem="4Iu-L3-Ens" secondAttribute="bottom" constant="20" id="kMJ-2O-MWX"/>
+                            <constraint firstItem="4Iu-L3-Ens" firstAttribute="leading" secondItem="epK-Zd-RKQ" secondAttribute="leading" constant="20" id="yAS-RI-jlp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="automicOpenVideoInQuickTimeButton" destination="c4W-4S-t7C" id="O1i-I1-6td"/>
+                        <outlet property="captureMosueButton" destination="0YJ-Th-3Cx" id="xBu-bH-l5x"/>
+                        <outlet property="frameRatePopUpButton" destination="z73-Uo-3Ey" id="uRX-HS-JGO"/>
+                        <outlet property="hideControlsWhenRecordingButton" destination="t4y-59-TNl" id="IT3-g7-Obs"/>
+                        <outlet property="highlightMouseClickButton" destination="VMv-zl-9qg" id="TWk-79-9AI"/>
+                    </connections>
+                </viewController>
+                <customObject id="NQy-WM-D9T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="1140"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="handle_icon" width="24" height="24"/>
+        <image name="normal_left_right" width="6" height="1"/>
+        <image name="normal_top_bottom" width="1" height="6"/>
+        <image name="record_video_button_on" width="67" height="67"/>
+        <image name="snap_image_button_on" width="67" height="67"/>
+    </resources>
+</document>
