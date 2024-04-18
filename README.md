@@ -9,5 +9,10 @@ Features:
 * Optional have a mouse highlight animation triggered whenever you click your mouse while recording your screen.
 * Multiply video frame rate support. Support record in 60,30,25,24 or 15 frames per second.
 
+## Todo list
+* when user disable microphone, we need make a tip;
+* not support global shortcut;
+* enum windows function not working on new MacOS like 12.6;
+
 ## Support:
 If you have any question about this product,please create an issue about it.I will replay as soon as possible.
